@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel = "stylesheet" href = "./style.css">
+</head>
+
+<body>
+
+    <p> <input type = "button" value="Popup 1" id = "popup_switch1" style="background: #FFDCF8;"/> </p>
+    <p> <input type = "button" value="Popup 2" id = "popup_switch2" style="background: #ECDCFF;"/> </p>
+    <p> <input type = "button" value="Popup 3" id = "popup_switch3" style="background: #DCFFF2;"/> </p>
+    <p> <input type = "button" value="Popup 4" id = "popup_switch4" style="background: #DCFFDC;"/> </p>
+
+
+    <div class = "popup_overlay" id = "popup_overlay_id1">
+        <div class = "popup">
+            <div class = "popup_close" id = "popup_close_id1">X</div>
+            <p> If you’re writing your HTML and CSS code in OOCSS-style,
+                Yandex’s BEM style specifically, you will like this filter.
+                It provides some aliases and automatic insertions of common
+                block and element names in classes.</p>
+        </div>
+    </div>
+
+    <div class = "popup_overlay" id = "popup_overlay_id2">
+        <div class = "popup">
+            <div class = "popup_close" id = "popup_close_id2">X</div>
+            <div id = "popup_content"></div>
+        </div>
+    </div>
+
+
+<script src = "./popup.js"></script>
+
+<script>
+
+    var settingsStaticPopup = {
+
+        control_id: "popup_switch3",
+        overlay_id: "popup_overlay_id1",
+        close_id: "popup_close_id1"
+    };
+
+    var settingsDynamicPopup = {
+
+        control_id: "popup_switch4",
+        overlay_id: "popup_overlay_id2",
+        close_id: "popup_close_id2",
+        content_id: "popup_content",
+        dataLink: "./dataCssPopup.html"
+    };
+
+    document.getElementById("popup_switch1").onclick = popupModule.modalPopup;
+    document.getElementById("popup_switch2").onclick = popupModule.windowPopup;
+
+    popupModule.setJsPopupSettings(400, 400, "dataJsPopup.html");
+    popupModule.initPopup(settingsStaticPopup);
+    popupModule.initPopup(settingsDynamicPopup);
+
+</script>
+
+</body>
+</html>
